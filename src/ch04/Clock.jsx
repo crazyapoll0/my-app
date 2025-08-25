@@ -1,5 +1,3 @@
-
-
 function Clock(props) {
     return (
         <div>
@@ -8,5 +6,5 @@ function Clock(props) {
         </div>
     );
 }
-
+//react 
 export default Clock;
