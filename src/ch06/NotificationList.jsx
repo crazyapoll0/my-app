@@ -16,24 +16,20 @@ const reservedNotifications = [
     },
 ];
 
-// 타이머 변수 (컴포넌트 밖에서 선언해서 여러 메서드에서 공유)
 var timer;
 
 class NotificationList extends React.Component {
     constructor(props) {
         super(props);
 
-        // 상태 초기화: 현재 보여지고 있는 알림 리스트
         this.state= {
             notifications: [],
         };
     }
-
-     // 컴포넌트가 처음 화면에 렌더링된 직후 실행됨
+     
     componentDidMount() {
         const { notifications } = this.state;
 
-        // 1초마다 새로운 알림을 하나씩 추가
         timer = setInterval(() => {
             if (notifications.length < reservedNotifications.length) {
                 const index = notifications.length;
@@ -42,24 +38,30 @@ class NotificationList extends React.Component {
                     notifications: notifications,
                 });
             } else {
-                clearInterval(timer); // 모든 알림이 추가되면 타이머 중단
+                this.setState({
+                    notifications:[],
+                });
+                clearInterval(timer); 
             }
         }, 1000);
     }
 
-    // 컴포넌트가 사라질 때 실행됨 (메모리 누수 방지)
     componentWillUnmount() {
         if (timer) {
             clearInterval(timer);
         }
     }
     
-    render() {
+     render() {
         return (
             <div>
-                {this.state.notifications.map((notification) => {
-                    return <Notification message={notification.message} />;
-                })}
+                {this.state.notifications.map((notification) => (
+                    <Notification
+                        key={notification.id}
+                        id={notification.id}
+                        message={notification.message}
+                    />
+                ))}
             </div>
         );
     }
