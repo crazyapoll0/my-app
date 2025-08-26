@@ -1,12 +1,14 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import CommentList from './ch05/CommentList';
-import NotificationList from './ch06/NotificationList';
-import Counter from './ch07/Counter';
+import UserStatus from './ch07/UserStatus';
+import TextInputWIthFocusButton from './ch07/TextInputWIthFocusButton';
+import Accomodate from './ch07/Accomodate';
+import Confirmbutton from './ch08/ConfirmButton';
+import LandingPage from './ch09/LandingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Counter/>
+    <LandingPage/>
 );
 
 // If you want to start measuring performance in your app, pass a function
