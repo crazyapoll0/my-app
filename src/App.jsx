@@ -1,10 +1,11 @@
 import './App.css';
-import Reservation from './ch11/Reservation';
+import Parent from './ch14/Parent';
+
 
 function App() {
   return (
-    <Reservation/>
-  );
+    <Parent />
+  )
 }
 
 export default App;
